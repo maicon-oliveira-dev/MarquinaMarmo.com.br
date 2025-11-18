@@ -1,8 +1,1404 @@
+/* ========================================================================== */
+/* RESET & BASE                                                              */
+/* ========================================================================== */
+
 :root {
-    --cor-primaria: #F5F3EE;
-    --cor-secundaria: #D7C6A8; /* tom dourado suave */
-    --cor-marmore: #ECE8E2;
-    --madeira: #B78A62;
-    --preto: #111;
-    --cinza: #777;
+    --bg-claro: #f8f6f2;
+    --bg-destaque: #efe8de;
+    --texto-escuro: #1f1c1a;
+    --texto-claro: #6f6660;
+    --dourado: #c7a76b;
+    --madeira: #a87448;
+    --preto: #0d0b0a;
+    --cinza-suave: #ddd6ce;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", system-ui, sans-serif;
+    background: var(--bg-claro);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+.section-label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    color: var(--dourado);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--texto-claro);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.9rem 1.8rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(199, 167, 107, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(199, 167, 107, 0.35);
+}
+
+.btn-secondary {
+    color: var(--texto-escuro);
+    border-color: var(--dourado);
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background: rgba(199, 167, 107, 0.08);
+}
+
+.link-mais {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dourado);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.link-mais::after {
+    content: "→";
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.link-mais:hover::after {
+    transform: translateX(4px);
+}
+
+/* ========================================================================== */
+/* HEADER                                                                    */
+/* ========================================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 30px rgba(13, 11, 10, 0.05);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.logo img {
+    max-height: 48px;
+    width: auto;
+}
+
+.main-nav {
+    margin-left: auto;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--texto-claro);
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0.25rem 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--preto);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--cinza-suave);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(199, 167, 107, 0.1);
+    border-color: var(--dourado);
+}
+
+.menu-toggle .bar {
+    width: 18px;
+    height: 2px;
+    background: var(--texto-escuro);
+    border-radius: 999px;
+    margin: 0 auto;
+}
+
+.btn-header {
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(167, 116, 72, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 25px rgba(167, 116, 72, 0.35);
+}
+
+/* ========================================================================== */
+/* HERO                                                                      */
+/* ========================================================================== */
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(239, 232, 222, 0.9));
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../imagens/Área gourmet/Área gourmet em lâmina ultracompacta (6).jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: grayscale(0.1);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: 4rem 0;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--dourado);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--preto);
+}
+
+.hero-description {
+    color: var(--texto-claro);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ========================================================================== */
+/* SOBRE                                                                     */
+/* ========================================================================== */
+
+.sobre-preview {
+    background: #fff;
+    text-align: center;
+}
+
+.sobre-preview .container {
+    max-width: 820px;
+}
+
+.sobre-preview .section-label {
+    margin-bottom: 1.5rem;
+}
+
+.sobre-texto p {
+    margin-bottom: 1.2rem;
+    color: var(--texto-claro);
+}
+
+.sobre-texto p:last-child {
+    margin-bottom: 2rem;
+}
+
+/* ========================================================================== */
+/* SERVIÇOS                                                                  */
+/* ========================================================================== */
+
+.servicos-preview {
+    background: var(--bg-claro);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.servico-card {
+    background: #fff;
+    border: 1px solid var(--cinza-suave);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px rgba(15, 12, 10, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.servico-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(15, 12, 10, 0.1);
+}
+
+.servico-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, rgba(199, 167, 107, 0.25), rgba(167, 116, 72, 0.3));
+    display: inline-block;
+}
+
+.servico-card h3 {
+    font-size: 1.3rem;
+    color: var(--preto);
+}
+
+.servico-card p {
+    color: var(--texto-claro);
+    flex: 1;
+}
+
+.servico-link {
+    color: var(--madeira);
+    font-weight: 600;
+}
+
+/* ========================================================================== */
+/* ÁREAS GOURMET                                                             */
+/* ========================================================================== */
+
+.areas-gourmet {
+    background: #fff;
+}
+
+.areas-gourmet-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.areas-gourmet-texto p {
+    margin-bottom: 1rem;
+    color: var(--texto-claro);
+}
+
+.areas-gourmet-lista {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.areas-gourmet-lista li {
+    position: relative;
+    padding-left: 1.8rem;
+    font-weight: 500;
+    color: var(--preto);
+}
+
+.areas-gourmet-lista li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    box-shadow: 0 0 0 4px rgba(199, 167, 107, 0.2);
+}
+
+.areas-gourmet-galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.areas-gourmet-galeria figure {
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg-destaque);
+    min-height: 180px;
+}
+
+.areas-gourmet-galeria figure:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+.areas-gourmet-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.areas-gourmet-galeria figure:hover img {
+    transform: scale(1.03);
+}
+
+/* ========================================================================== */
+/* CTA FINAL                                                                 */
+/* ========================================================================== */
+
+.cta-final {
+    background: var(--bg-destaque);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 720px;
+}
+
+.cta-content h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--texto-claro);
+    margin-bottom: 2rem;
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cta-actions .btn-primary {
+    min-width: 240px;
+}
+
+/* ========================================================================== */
+/* PÁGINA DE PROJETOS                                                        */
+/* ========================================================================== */
+
+.page-main {
+    background: var(--bg-claro);
+}
+
+.projetos-page section {
+    padding: 4.5rem 0;
+}
+
+.page-hero.projetos-hero {
+    padding: 5rem 0 3rem;
+    background: linear-gradient(180deg, #fff, var(--bg-claro));
+}
+
+.page-hero.projetos-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.page-hero.projetos-hero p {
+    max-width: 720px;
+    color: var(--texto-claro);
+    font-size: 1.1rem;
+}
+
+/* ========================================================================== */
+/* PROJETOS – HERO E CATEGORIAS                                              */
+/* ========================================================================== */
+
+.projetos-categorias {
+    padding-top: 0;
+}
+
+.projetos-categorias-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.projetos-categoria-item {
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(199, 167, 107, 0.25);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+    transition: border 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.projetos-categoria-item:hover {
+    border-color: var(--dourado);
+    color: var(--preto);
+    background: rgba(199, 167, 107, 0.12);
+}
+
+/* ========================================================================== */
+/* PROJETOS – GRID E CARDS                                                   */
+/* ========================================================================== */
+
+.projetos-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+}
+
+.projeto-card {
+    background: #fff;
+    border: 1px solid rgba(221, 214, 206, 0.8);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(15, 12, 10, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.projeto-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15, 12, 10, 0.12);
+}
+
+.projeto-card figure {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.projeto-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.projeto-card:hover img {
+    transform: scale(1.05);
+}
+
+.projeto-card h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 1.5rem 0.5rem;
+    color: var(--preto);
+}
+
+.projeto-card p {
+    margin: 0 1.5rem 1.5rem;
+    color: var(--texto-claro);
+}
+
+/* ========================================================================== */
+/* PROJETOS – CTA FINAL                                                      */
+/* ========================================================================== */
+
+.projetos-cta {
+    background: var(--bg-destaque);
+    text-align: center;
+    padding: 4.5rem 0;
+}
+
+.projetos-cta .cta-content {
+    max-width: 640px;
+}
+
+.projetos-cta .cta-actions {
+    justify-content: center;
+}
+
+/* ========================================================================== */
+/* PÁGINA DE SERVIÇOS                                                        */
+/* ========================================================================== */
+
+.servicos-page section {
+    padding: 4.5rem 0;
+}
+
+.page-hero.servicos-hero {
+    padding: 5rem 0 3rem;
+}
+
+.page-hero.servicos-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem);
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.page-hero.servicos-hero p {
+    max-width: 720px;
+    color: var(--texto-claro);
+    font-size: 1.1rem;
+}
+
+/* ========================================================================== */
+/* SERVIÇOS – GRUPOS                                                         */
+/* ========================================================================== */
+
+.servicos-grupos {
+    background: #fff;
+}
+
+.servicos-grupos-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.servicos-grupos-intro {
+    color: var(--texto-claro);
+    font-size: 1.05rem;
+}
+
+.servicos-grupos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.servico-detalhe {
+    background: #fff;
+    border: 1px solid rgba(221, 214, 206, 0.8);
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: 0 12px 30px rgba(15, 12, 10, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.servico-detalhe:hover {
+    transform: translateY(-4px);
+    border-color: rgba(199, 167, 107, 0.6);
+    box-shadow: 0 18px 35px rgba(15, 12, 10, 0.1);
+}
+
+.servico-detalhe h2,
+.servico-detalhe h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: var(--preto);
+}
+
+.servico-detalhe p {
+    color: var(--texto-claro);
+    margin-bottom: 1rem;
+}
+
+.servico-detalhe ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.servico-detalhe li {
+    position: relative;
+    padding-left: 1.2rem;
+    color: var(--texto-escuro);
+}
+
+.servico-detalhe li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--dourado);
+    line-height: 1;
+}
+
+.servicos-intro-galeria {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.servico-intro-item {
+    background-color: #fff;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.servico-intro-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.servico-intro-item figcaption {
+    padding: 0.75rem 1rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--preto);
+}
+
+/* ========================================================================== */
+/* SERVIÇOS – ÁREAS GOURMET                                                  */
+/* ========================================================================== */
+
+.servicos-areas-gourmet {
+    background: var(--bg-claro);
+}
+
+.servicos-areas-gourmet-conteudo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    color: var(--texto-claro);
+}
+
+.servicos-areas-gourmet-conteudo ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.servicos-areas-gourmet-conteudo li {
+    position: relative;
+    padding-left: 2rem;
+    color: var(--texto-escuro);
+}
+
+.servicos-areas-gourmet-conteudo li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    box-shadow: 0 0 0 4px rgba(199, 167, 107, 0.2);
+}
+
+.servicos-areas-gourmet-conteudo .link-mais,
+.servicos-areas-gourmet-conteudo .btn {
+    margin-top: 1.5rem;
+}
+
+/* ========================================================================== */
+/* SERVIÇOS – PROCESSO                                                       */
+/* ========================================================================== */
+
+.servicos-processo {
+    background: var(--bg-destaque);
+    text-align: center;
+}
+
+.servicos-processo h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.servicos-processo p {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    color: var(--texto-claro);
+}
+
+.servicos-processo ol {
+    list-style: decimal;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--texto-escuro);
+}
+
+/* ========================================================================== */
+/* SERVIÇOS – CTA FINAL                                                      */
+/* ========================================================================== */
+
+.servicos-cta {
+    background: linear-gradient(120deg, rgba(248, 246, 242, 0.95), #fff);
+    text-align: center;
+}
+
+.servicos-cta .cta-content {
+    max-width: 640px;
+}
+
+.servicos-cta .cta-actions {
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* ========================================================================== */
+/* PÁGINA SOBRE                                                              */
+/* ========================================================================== */
+
+.sobre-page .page-section {
+    padding: 4.5rem 0;
+}
+
+.sobre-hero {
+    background: linear-gradient(180deg, #fff, var(--bg-claro));
+    text-align: center;
+}
+
+.sobre-hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sobre-essencia {
+    background: #fff;
+}
+
+.sobre-essencia-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.sobre-texto-principal p {
+    color: var(--texto-claro);
+    margin-bottom: 1.2rem;
+}
+
+.sobre-destaques {
+    background: var(--bg-claro);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 12px 30px rgba(15, 12, 10, 0.05);
+}
+
+.sobre-destaques-lista {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.sobre-destaques-lista li {
+    position: relative;
+    padding-left: 1.8rem;
+    color: var(--texto-escuro);
+}
+
+.sobre-destaques-lista li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--dourado), var(--madeira));
+    box-shadow: 0 0 0 4px rgba(199, 167, 107, 0.15);
+}
+
+.sobre-processo {
+    background: var(--bg-claro);
+}
+
+.sobre-processo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.sobre-processo-item {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(221, 214, 206, 0.7);
+    padding: 1.75rem;
+    box-shadow: 0 12px 28px rgba(15, 12, 10, 0.05);
+}
+
+.sobre-processo-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--preto);
+}
+
+.sobre-processo-item p {
+    color: var(--texto-claro);
+}
+
+.sobre-clientes-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.sobre-clientes-lista {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sobre-clientes-lista li {
+    position: relative;
+    padding-left: 2.2rem;
+    color: var(--texto-claro);
+    background: #fff;
+    border-radius: 18px;
+    padding: 1rem 1.5rem 1rem 2.5rem;
+    box-shadow: 0 10px 25px rgba(15, 12, 10, 0.05);
+}
+
+.sobre-clientes-lista li::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--dourado);
+}
+
+.sobre-cta-final {
+    background: var(--bg-destaque);
+    text-align: center;
+}
+
+.contato-page .page-section {
+    padding: 4.5rem 0;
+}
+
+.contato-hero {
+    background: var(--bg-claro);
+    text-align: center;
+}
+
+.contato-dados {
+    background: #fff;
+}
+
+.contato-dados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.contato-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(221, 214, 206, 0.7);
+    box-shadow: 0 12px 28px rgba(15, 12, 10, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contato-card h2 {
+    font-size: 1.4rem;
+    color: var(--preto);
+}
+
+.contato-card p {
+    color: var(--texto-claro);
+}
+
+.contato-info {
+    font-weight: 600;
+    color: var(--preto);
+}
+
+.contato-form-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.contato-form-texto p {
+    color: var(--texto-claro);
+    margin-top: 1rem;
+}
+
+.contato-form {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 12px 30px rgba(15, 12, 10, 0.05);
+    border: 1px solid rgba(221, 214, 206, 0.6);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--texto-escuro);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 1px solid var(--cinza-suave);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    font: inherit;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--dourado);
+    box-shadow: 0 0 0 3px rgba(199, 167, 107, 0.2);
+}
+
+.contato-form-note {
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+    margin: 1rem 0 1.5rem;
+}
+
+.contato-mapa {
+    background: var(--bg-claro);
+}
+
+.contato-mapa-placeholder {
+    margin-top: 1.5rem;
+    border: 2px dashed rgba(15, 12, 10, 0.1);
+    border-radius: 20px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--texto-claro);
+    font-weight: 600;
+}
+/* FOOTER                                                                    */
+/* ========================================================================== */
+
+.site-footer {
+    background: #1c1815;
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4rem;
+}
+
+.site-footer a {
+    color: inherit;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-logo img {
+    max-width: 160px;
+}
+
+.footer-title {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    color: var(--dourado);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.82);
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================================================== */
+/* MEDIA QUERIES                                                             */
+/* ========================================================================== */
+
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 0;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .btn-header {
+        order: 2;
+    }
+
+    .main-nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 1.25rem 0;
+        border-top: 1px solid var(--cinza-suave);
+        gap: 1rem;
+    }
+
+    .nav-list.is-open {
+        display: flex;
+    }
+
+    .hero {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .areas-gourmet-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .areas-gourmet-galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .site-footer .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .projetos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .projetos-categorias-list {
+        justify-content: flex-start;
+    }
+
+    .servicos-grupos-layout,
+    .servicos-areas-gourmet-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-essencia-layout,
+    .sobre-clientes-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-processo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-hero-actions {
+        flex-direction: column;
+    }
+
+    .sobre-cta-final .cta-actions {
+        flex-direction: column;
+    }
+
+    .contato-dados-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contato-form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .servicos-intro-galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .servicos-processo ol {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .areas-gourmet-galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-actions .btn,
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .btn-header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-column,
+    .footer-column .footer-links {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-links {
+        gap: 0.75rem;
+    }
+
+    .projetos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projetos-categorias-list {
+        justify-content: center;
+    }
+
+    .projeto-card h3,
+    .projeto-card p {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+    }
+
+    .servicos-page section {
+        padding: 3.5rem 0;
+    }
+
+    .sobre-hero-actions,
+    .sobre-cta-final .cta-actions {
+        flex-direction: column;
+    }
+
+    .servicos-grupos-list {
+        gap: 1rem;
+    }
+
+    .servico-detalhe {
+        padding: 1.5rem;
+    }
+
+    .servicos-intro-galeria {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+    }
+
+    .servicos-areas-gourmet-conteudo {
+        gap: 1.25rem;
+    }
+
+    .servicos-processo h2 {
+        font-size: 2rem;
+    }
+
+    .servicos-cta .cta-actions,
+    .sobre-cta-final .cta-actions,
+    .contato-form button.btn {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contato-dados-grid,
+    .contato-form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-card,
+    .contato-form {
+        padding: 1.5rem;
+    }
 }
