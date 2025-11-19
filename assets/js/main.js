@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (selector === '#header-placeholder') {
                     initMenuToggle();
                     initHeaderShrink();
+                    initActiveMenu();
                 }
             })
             .catch((error) => {
@@ -156,6 +157,31 @@ document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('scroll', toggleShrinkState, { passive: true });
             headerShrinkListenerAttached = true;
         }
+    };
+
+    /**
+     * Identifica o link do menu referente a pagina atual e aplica o estado ativo.
+     */
+    const initActiveMenu = () => {
+        const navLinks = document.querySelectorAll('.site-header .nav-link');
+        const currentPath = window.location.pathname.replace(/\\/g, '/');
+        const normalizedPath = currentPath.endsWith('/') ? `${currentPath}index.html` : currentPath;
+        const pathForComparison = normalizedPath.toLowerCase();
+
+        if (!navLinks.length) {
+            return;
+        }
+
+        navLinks.forEach((link) => {
+            const linkPath =
+                (link.getAttribute('data-relative-href') || link.getAttribute('href') || '').toLowerCase();
+
+            if (linkPath && pathForComparison.endsWith(linkPath)) {
+                link.classList.add('is-active');
+            } else {
+                link.classList.remove('is-active');
+            }
+        });
     };
 
     // Dispara o carregamento dos componentes globais

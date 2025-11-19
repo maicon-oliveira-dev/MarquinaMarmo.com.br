@@ -263,6 +263,15 @@ section {
     transform: scaleX(1);
 }
 
+/* Estado ativo do menu principal */
+.site-header .nav-link.is-active {
+    color: var(--dourado);
+}
+
+.site-header .nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;
