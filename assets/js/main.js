@@ -31,6 +31,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const initGalleryLightbox = () => {
+        const lightbox = document.getElementById('galeria-lightbox');
+        const galleryImages = document.querySelectorAll('.galeria-grid img');
+
+        if (!lightbox || !galleryImages.length) {
+            return;
+        }
+
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const backdrop = lightbox.querySelector('.lightbox-backdrop');
+
+        if (!lightboxImg || !lightboxCaption || !closeBtn || !backdrop) {
+            return;
+        }
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightboxImg.removeAttribute('src');
+            lightboxImg.removeAttribute('alt');
+            lightboxCaption.textContent = '';
+        };
+
+        const openLightbox = (img) => {
+            const figure = img.closest('.galeria-item');
+            const figureCaption = figure?.querySelector('figcaption');
+            const captionText = figureCaption?.textContent?.trim() || img.alt || '';
+
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || 'Imagem ampliada da galeria';
+            lightboxCaption.textContent = captionText;
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+        };
+
+        galleryImages.forEach((image) => {
+            image.addEventListener('click', () => openLightbox(image));
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        backdrop.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+                closeLightbox();
+            }
+        });
+    };
+
     /**
      * Carrega fragmentos HTML (header/footer) dinamicamente.
      * @param {string} selector - seletor do placeholder.
@@ -110,4 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dispara o carregamento dos componentes globais
     loadComponent('#header-placeholder', headerUrl);
     loadComponent('#footer-placeholder', footerUrl);
+
+    if (document.querySelector('.galeria-page')) {
+        initGalleryLightbox();
+    }
 });

@@ -155,7 +155,7 @@ section {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     box-shadow: 0 12px 30px rgba(13, 11, 10, 0.05);
-    padding: 1.2rem 0;
+    padding: 0.7rem 0;
     transition: padding 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
@@ -174,8 +174,8 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
     background: #fff;
@@ -288,7 +288,7 @@ section {
 }
 
 .btn-header {
-    padding: 0.65rem 1.4rem;
+    padding: 0.50rem 1.0rem;
     border-radius: 999px;
     font-weight: 600;
     background: linear-gradient(120deg, var(--dourado), var(--madeira));
@@ -1178,6 +1178,205 @@ section {
     color: var(--texto-claro);
     font-weight: 600;
 }
+
+/* =========================================
+   PÁGINA GALERIA
+========================================= */
+
+.galeria-page {
+    background: var(--bg-claro);
+}
+
+.galeria-hero {
+    background: linear-gradient(180deg, #fff, var(--bg-claro));
+    text-align: center;
+    padding: 5rem 0 3.5rem;
+}
+
+.galeria-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.galeria-hero .section-subtitle {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+}
+
+.galeria-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.galeria-filter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(199, 167, 107, 0.6);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-escuro);
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.galeria-filter:hover,
+.galeria-filter:focus-visible {
+    background: rgba(199, 167, 107, 0.12);
+    box-shadow: 0 8px 18px rgba(13, 11, 10, 0.08);
+    transform: translateY(-1px);
+}
+
+.galeria-section {
+    padding: 4.5rem 0;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+}
+
+.galeria-item {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 45px rgba(15, 12, 10, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.galeria-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 35px 60px rgba(15, 12, 10, 0.12);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.galeria-item figcaption {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--texto-escuro);
+    border-top: 1px solid rgba(13, 11, 10, 0.06);
+    background: #fff;
+}
+
+.galeria-cta-final {
+    background: linear-gradient(120deg, rgba(248, 246, 242, 0.95), #fff);
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.galeria-cta-final .cta-content {
+    max-width: 720px;
+}
+
+.galeria-cta-final .cta-actions {
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* =========================
+   GALERIA – LIGHTBOX
+========================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox.is-open {
+    display: flex;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 8, 7, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.lightbox-content {
+    position: relative;
+    background: #fff;
+    border-radius: 28px;
+    padding: 2.5rem;
+    max-width: 960px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 45px 90px rgba(15, 12, 10, 0.25);
+    z-index: 1;
+}
+
+.lightbox-img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.lightbox-caption {
+    font-size: 0.95rem;
+    color: var(--texto-claro);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(199, 167, 107, 0.15);
+    color: var(--texto-escuro);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    background: rgba(199, 167, 107, 0.35);
+    transform: scale(1.08);
+}
+
+.page-obrigado .obrigado-section {
+    background: var(--bg-claro);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.page-obrigado .obrigado-content {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.page-obrigado .cta-actions {
+    justify-content: center;
+    gap: 1rem;
+}
 /* FOOTER                                                                    */
 /* ========================================================================== */
 
@@ -1256,6 +1455,36 @@ section {
 
     section {
         padding: 4rem 0;
+    }
+
+    .galeria-hero {
+        padding: 4rem 0 2.5rem;
+        text-align: left;
+    }
+
+    .galeria-hero .section-subtitle {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .galeria-filters {
+        justify-content: flex-start;
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lightbox {
+        padding: 1.5rem;
+    }
+
+    .lightbox-content {
+        padding: 1.75rem;
+    }
+
+    .lightbox-img {
+        max-height: 60vh;
     }
 
     .layout-container {
@@ -1405,6 +1634,41 @@ section {
 
     .areas-gourmet-galeria {
         grid-template-columns: 1fr;
+    }
+
+    .galeria-hero {
+        padding: 3.5rem 0 2rem;
+    }
+
+    .galeria-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .galeria-filter {
+        width: 100%;
+        text-align: center;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-item img {
+        height: 260px;
+    }
+
+    .lightbox {
+        padding: 1rem;
+    }
+
+    .lightbox-content {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .lightbox-img {
+        max-height: 55vh;
     }
 
     .cta-actions .btn,
