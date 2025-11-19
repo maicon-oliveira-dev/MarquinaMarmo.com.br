@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Atualize a base da URL ao migrar para o domínio definitivo -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/sobre.html</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/servicos.html</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/projetos.html</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/galeria.html</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/contato.html</loc>
+  </url>
+  <url>
+    <loc>https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/pages/obrigado.html</loc>
+  </url>
+</urlset>

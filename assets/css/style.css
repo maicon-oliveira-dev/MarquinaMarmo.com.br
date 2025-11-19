@@ -3,14 +3,14 @@
 /* ========================================================================== */
 
 :root {
-    --bg-claro: #f8f6f2;
-    --bg-destaque: #efe8de;
-    --texto-escuro: #1f1c1a;
-    --texto-claro: #6f6660;
-    --dourado: #c7a76b;
-    --madeira: #a87448;
-    --preto: #0d0b0a;
-    --cinza-suave: #ddd6ce;
+    --bg-claro: #050507;
+    --bg-destaque: #0f0f17;
+    --texto-escuro: #f5f5f7;
+    --texto-claro: #b8b8c5;
+    --dourado: #c3142c;
+    --madeira: #f04859;
+    --preto: #010102;
+    --cinza-suave: #262630;
 }
 
 *,
@@ -28,7 +28,7 @@ html {
 
 body {
     font-family: "Poppins", system-ui, sans-serif;
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
     color: var(--texto-escuro);
     line-height: 1.6;
     min-height: 100vh;
@@ -99,17 +99,20 @@ section {
     font-weight: 600;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     border: 1px solid transparent;
+    background: transparent;
+    color: var(--texto-escuro);
 }
 
 .btn-primary {
     background: linear-gradient(120deg, var(--dourado), var(--madeira));
     color: #fff;
-    box-shadow: 0 10px 20px rgba(199, 167, 107, 0.25);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 15px 25px rgba(199, 167, 107, 0.35);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(120deg, var(--madeira), var(--dourado));
 }
 
 .btn-secondary {
@@ -119,7 +122,7 @@ section {
 }
 
 .btn-secondary:hover {
-    background: rgba(199, 167, 107, 0.08);
+    background: rgba(195, 20, 44, 0.12);
 }
 
 .link-mais {
@@ -152,9 +155,9 @@ section {
     left: 0;
     width: 100%;
     z-index: 80;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 12px 30px rgba(13, 11, 10, 0.05);
+    background: rgba(5, 5, 8, 0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
     padding: 0.7rem 0;
     transition: padding 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
@@ -178,8 +181,8 @@ section {
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background: #fff;
-    box-shadow: 0 12px 30px rgba(13, 11, 10, 0.1);
+    background: var(--card-bg, #1f1f26);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -204,8 +207,8 @@ section {
 
 .header--shrink {
     padding: 0.65rem 0;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 20px rgba(13, 11, 10, 0.08);
+    background: rgba(3, 3, 6, 0.95);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 .header--shrink .logo {
@@ -252,7 +255,7 @@ section {
 
 .nav-link:hover,
 .nav-link:focus-visible {
-    color: var(--preto);
+    color: var(--dourado);
 }
 
 .nav-link:hover::after,
@@ -269,13 +272,13 @@ section {
     height: 42px;
     border-radius: 50%;
     border: 1px solid var(--cinza-suave);
-    background: transparent;
+    background: rgba(255, 255, 255, 0.04);
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .menu-toggle:hover {
-    background: rgba(199, 167, 107, 0.1);
+    background: rgba(195, 20, 44, 0.15);
     border-color: var(--dourado);
 }
 
@@ -293,13 +296,13 @@ section {
     font-weight: 600;
     background: linear-gradient(120deg, var(--dourado), var(--madeira));
     color: #fff;
-    box-shadow: 0 10px 20px rgba(167, 116, 72, 0.25);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-header:hover {
     transform: translateY(-2px);
-    box-shadow: 0 18px 25px rgba(167, 116, 72, 0.35);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
 }
 
 /* ========================================================================== */
@@ -310,7 +313,7 @@ section {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(239, 232, 222, 0.9));
+    background: linear-gradient(140deg, rgba(5, 5, 8, 0.95), rgba(15, 15, 22, 0.85));
     position: relative;
     overflow: hidden;
 }
@@ -322,8 +325,8 @@ section {
     background-image: url("../imagens/Área gourmet/Área gourmet em lâmina ultracompacta (6).jpg");
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
-    filter: grayscale(0.1);
+    opacity: 0.12;
+    filter: grayscale(0.2);
 }
 
 .hero-content {
@@ -345,7 +348,7 @@ section {
     font-size: clamp(2.5rem, 5vw, 3.8rem);
     line-height: 1.15;
     margin-bottom: 1.5rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .hero-description {
@@ -365,7 +368,7 @@ section {
 /* ========================================================================== */
 
 .sobre-preview {
-    background: #fff;
+    background: var(--bg-secundario);
     text-align: center;
 }
 
@@ -391,7 +394,7 @@ section {
 /* ========================================================================== */
 
 .servicos-preview {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .servicos-grid {
@@ -401,11 +404,11 @@ section {
 }
 
 .servico-card {
-    background: #fff;
+    background: var(--card-bg);
     border: 1px solid var(--cinza-suave);
     border-radius: 18px;
     padding: 2rem;
-    box-shadow: 0 15px 30px rgba(15, 12, 10, 0.05);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -414,20 +417,20 @@ section {
 
 .servico-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(15, 12, 10, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
 }
 
 .servico-icon {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: linear-gradient(120deg, rgba(199, 167, 107, 0.25), rgba(167, 116, 72, 0.3));
+    background: linear-gradient(120deg, rgba(195, 20, 44, 0.35), rgba(240, 72, 89, 0.35));
     display: inline-block;
 }
 
 .servico-card h3 {
     font-size: 1.3rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .servico-card p {
@@ -436,7 +439,7 @@ section {
 }
 
 .servico-link {
-    color: var(--madeira);
+    color: var(--dourado);
     font-weight: 600;
 }
 
@@ -445,7 +448,7 @@ section {
 /* ========================================================================== */
 
 .areas-gourmet {
-    background: #fff;
+    background: var(--bg-secundario);
 }
 
 .areas-gourmet-layout {
@@ -473,7 +476,7 @@ section {
     position: relative;
     padding-left: 1.8rem;
     font-weight: 500;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .areas-gourmet-lista li::before {
@@ -486,7 +489,7 @@ section {
     height: 12px;
     border-radius: 50%;
     background: linear-gradient(120deg, var(--dourado), var(--madeira));
-    box-shadow: 0 0 0 4px rgba(199, 167, 107, 0.2);
+    box-shadow: 0 0 0 4px rgba(195, 20, 44, 0.2);
 }
 
 .areas-gourmet-galeria {
@@ -556,7 +559,7 @@ section {
 /* ========================================================================== */
 
 .page-main {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .projetos-page section {
@@ -571,7 +574,7 @@ section {
 .page-hero.projetos-hero h1 {
     font-size: clamp(2.5rem, 5vw, 3.8rem);
     margin-bottom: 1rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .page-hero.projetos-hero p {
@@ -609,7 +612,7 @@ section {
 
 .projetos-categoria-item:hover {
     border-color: var(--dourado);
-    color: var(--preto);
+    color: var(--texto-escuro);
     background: rgba(199, 167, 107, 0.12);
 }
 
@@ -629,7 +632,7 @@ section {
 }
 
 .projeto-card {
-    background: #fff;
+    background: var(--bg-secundario);
     border: 1px solid rgba(221, 214, 206, 0.8);
     border-radius: 24px;
     overflow: hidden;
@@ -664,7 +667,7 @@ section {
 .projeto-card h3 {
     font-size: 1.2rem;
     margin: 1.5rem 1.5rem 0.5rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .projeto-card p {
@@ -705,7 +708,7 @@ section {
 .page-hero.servicos-hero h1 {
     font-size: clamp(2.5rem, 5vw, 3.2rem);
     margin-bottom: 1rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .page-hero.servicos-hero p {
@@ -719,7 +722,7 @@ section {
 /* ========================================================================== */
 
 .servicos-grupos {
-    background: #fff;
+    background: var(--bg-secundario);
 }
 
 .servicos-grupos-layout {
@@ -741,7 +744,7 @@ section {
 }
 
 .servico-detalhe {
-    background: #fff;
+    background: var(--bg-secundario);
     border: 1px solid rgba(221, 214, 206, 0.8);
     border-radius: 20px;
     padding: 1.75rem;
@@ -759,7 +762,7 @@ section {
 .servico-detalhe h3 {
     font-size: 1.4rem;
     margin-bottom: 0.75rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .servico-detalhe p {
@@ -817,7 +820,7 @@ section {
     padding: 0.75rem 1rem 1rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 /* ========================================================================== */
@@ -825,7 +828,7 @@ section {
 /* ========================================================================== */
 
 .servicos-areas-gourmet {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .servicos-areas-gourmet-conteudo {
@@ -939,7 +942,7 @@ section {
 }
 
 .sobre-essencia {
-    background: #fff;
+    background: var(--bg-secundario);
 }
 
 .sobre-essencia-layout {
@@ -955,7 +958,7 @@ section {
 }
 
 .sobre-destaques {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
     border-radius: 24px;
     padding: 2rem;
     box-shadow: 0 12px 30px rgba(15, 12, 10, 0.05);
@@ -989,7 +992,7 @@ section {
 }
 
 .sobre-processo {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .sobre-processo-grid {
@@ -999,7 +1002,7 @@ section {
 }
 
 .sobre-processo-item {
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 20px;
     border: 1px solid rgba(221, 214, 206, 0.7);
     padding: 1.75rem;
@@ -1009,7 +1012,7 @@ section {
 .sobre-processo-item h3 {
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .sobre-processo-item p {
@@ -1035,7 +1038,7 @@ section {
     position: relative;
     padding-left: 2.2rem;
     color: var(--texto-claro);
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 18px;
     padding: 1rem 1.5rem 1rem 2.5rem;
     box-shadow: 0 10px 25px rgba(15, 12, 10, 0.05);
@@ -1062,12 +1065,12 @@ section {
 }
 
 .contato-hero {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
     text-align: center;
 }
 
 .contato-dados {
-    background: #fff;
+    background: var(--bg-secundario);
 }
 
 .contato-dados-grid {
@@ -1077,7 +1080,7 @@ section {
 }
 
 .contato-card {
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid rgba(221, 214, 206, 0.7);
@@ -1089,7 +1092,7 @@ section {
 
 .contato-card h2 {
     font-size: 1.4rem;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .contato-card p {
@@ -1098,7 +1101,7 @@ section {
 
 .contato-info {
     font-weight: 600;
-    color: var(--preto);
+    color: var(--texto-escuro);
 }
 
 .contato-form-layout {
@@ -1114,7 +1117,7 @@ section {
 }
 
 .contato-form {
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 24px;
     padding: 2rem;
     box-shadow: 0 12px 30px rgba(15, 12, 10, 0.05);
@@ -1145,7 +1148,7 @@ section {
     border-radius: 12px;
     padding: 0.85rem 1rem;
     font: inherit;
-    background: #fff;
+    background: var(--bg-secundario);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1164,7 +1167,7 @@ section {
 }
 
 .contato-mapa {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .contato-mapa-placeholder {
@@ -1184,7 +1187,7 @@ section {
 ========================================= */
 
 .galeria-page {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
 }
 
 .galeria-hero {
@@ -1241,7 +1244,7 @@ section {
 }
 
 .galeria-item {
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 25px 45px rgba(15, 12, 10, 0.08);
@@ -1266,7 +1269,7 @@ section {
     font-size: 0.95rem;
     color: var(--texto-escuro);
     border-top: 1px solid rgba(13, 11, 10, 0.06);
-    background: #fff;
+    background: var(--bg-secundario);
 }
 
 .galeria-cta-final {
@@ -1311,7 +1314,7 @@ section {
 
 .lightbox-content {
     position: relative;
-    background: #fff;
+    background: var(--bg-secundario);
     border-radius: 28px;
     padding: 2.5rem;
     max-width: 960px;
@@ -1358,7 +1361,7 @@ section {
 }
 
 .page-obrigado .obrigado-section {
-    background: var(--bg-claro);
+    background: var(--bg-destaque);
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -1453,6 +1456,14 @@ section {
         padding-top: 100px;
     }
 
+    .site-header {
+        padding: 0.55rem 0;
+    }
+
+    .header--shrink {
+        padding: 0.45rem 0;
+    }
+
     section {
         padding: 4rem 0;
     }
@@ -1496,22 +1507,20 @@ section {
         gap: 1.25rem;
     }
 
-    .logo {
-        width: 60px;
-        height: 60px;
-    }
-
-    .header--shrink .logo {
-        width: 52px;
-        height: 52px;
-    }
-
     .menu-toggle {
         display: inline-flex;
+        width: 36px;
+        height: 36px;
+    }
+
+    .menu-toggle .bar {
+        width: 16px;
     }
 
     .btn-header {
         order: 2;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.9rem;
     }
 
     .main-nav {
@@ -1524,23 +1533,36 @@ section {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        padding: 1.25rem 0;
+        padding: 0.85rem 0;
         border-top: 1px solid var(--cinza-suave);
-        gap: 1rem;
+        gap: 0.65rem;
     }
 
     .nav-list.is-open {
         display: flex;
     }
 
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
     .hero {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding: 4rem 0;
     }
 
     .hero-buttons {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 2.8rem);
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 1rem;
     }
 
     .areas-gourmet-layout {
@@ -1605,11 +1627,34 @@ section {
     .servicos-processo ol {
         text-align: left;
     }
+
+    .btn {
+        padding: 0.75rem 1.4rem;
+        font-size: 0.95rem;
+        border-radius: 48px;
+    }
+
+    .hero-buttons .btn,
+    .cta-actions .btn,
+    .sobre-hero-actions .btn,
+    .sobre-cta-final .btn {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 480px) {
     body {
         padding-top: 90px;
+    }
+
+    .site-header {
+        padding: 0.45rem 0;
+    }
+
+    .header--shrink {
+        padding: 0.35rem 0;
     }
 
     html {
@@ -1735,14 +1780,18 @@ section {
         font-size: 2rem;
     }
 
-    .logo {
-        width: 52px;
-        height: 52px;
+    .menu-toggle {
+        width: 32px;
+        height: 32px;
     }
 
-    .header--shrink .logo {
-        width: 46px;
-        height: 46px;
+    .menu-toggle .bar {
+        width: 14px;
+    }
+
+    .nav-list {
+        padding: 0.65rem 0;
+        gap: 0.5rem;
     }
 
     .servicos-cta .cta-actions,
@@ -1757,8 +1806,150 @@ section {
         grid-template-columns: 1fr;
     }
 
+.btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        border-radius: 36px;
+    }
+
+    .hero-buttons .btn,
+    .cta-actions .btn {
+        max-width: 280px;
+    }
+
+    .hero {
+        padding: 3.5rem 0;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
     .contato-card,
     .contato-form {
         padding: 1.5rem;
     }
 }
+/* ========================================================================== */
+/* DARK THEME OVERRIDES                                                       */
+/* ========================================================================== */
+body {
+    background: var(--bg-claro);
+    color: var(--texto-escuro);
+}
+section {
+    background: transparent;
+}
+.section-header h2 {
+    color: var(--texto-escuro);
+}
+.section-subtitle {
+    color: var(--texto-claro);
+}
+.site-header,
+.header--shrink {
+    background: rgba(5, 5, 8, 0.92);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
+}
+.logo {
+    background: var(--card-bg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+}
+.nav-link {
+    color: var(--texto-claro);
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--dourado);
+}
+.menu-toggle {
+    border-color: var(--cinza-suave);
+    background: rgba(255, 255, 255, 0.04);
+}
+.menu-toggle .bar {
+    background: var(--texto-escuro);
+}
+.hero {
+    background: linear-gradient(140deg, rgba(5, 5, 8, 0.95), rgba(15, 15, 22, 0.85));
+}
+.hero::before {
+    opacity: 0.12;
+    filter: grayscale(0.2);
+}
+.hero-title {
+    color: var(--texto-escuro);
+}
+.hero-description {
+    color: var(--texto-claro);
+}
+.sobre-preview,
+.servicos-preview,
+.areas-gourmet,
+.cta-final,
+.projetos-cta,
+.servicos-cta,
+.sobre-hero,
+.page-hero.projetos-hero,
+.page-hero.servicos-hero,
+.galeria-hero,
+.contato-hero,
+.galeria-cta-final {
+    background: linear-gradient(180deg, rgba(6, 6, 10, 0.95), var(--bg-destaque));
+}
+.servico-card,
+.servico-intro-item,
+.projeto-card,
+.galeria-item,
+.contato-card {
+    background: var(--card-bg);
+    border: 1px solid var(--cinza-suave);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+}
+.servico-icon {
+    background: linear-gradient(120deg, rgba(195, 20, 44, 0.35), rgba(240, 72, 89, 0.35));
+}
+.projetos-categoria-item,
+.galeria-filter {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--cinza-suave);
+    color: var(--texto-claro);
+}
+.projetos-categoria-item:hover,
+.galeria-filter:hover {
+    border-color: var(--dourado);
+    color: var(--texto-escuro);
+}
+.galeria-item figcaption,
+.projeto-card p {
+    color: var(--texto-claro);
+}
+.site-footer {
+    background: #020204;
+    color: var(--texto-claro);
+}
+.footer-links a:hover {
+    color: var(--dourado);
+}
+.lightbox {
+    background: rgba(5, 5, 8, 0.85);
+}
+.lightbox-content {
+    background: var(--card-bg);
+    color: var(--texto-escuro);
+}
+.lightbox-caption {
+    color: var(--texto-claro);
+}
+.lightbox-close {
+    background: rgba(195, 20, 44, 0.15);
+    color: var(--texto-escuro);
+}
+.lightbox-close:hover {
+    background: rgba(195, 20, 44, 0.35);
+}
+
+

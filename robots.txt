@@ -1,0 +1,5 @@
+# Este caminho usa a URL atual do GitHub Pages
+User-agent: *
+Allow: /
+
+Sitemap: https://maicon-oliveira-dev.github.io/MarquinaMarmo.com.br/sitemap.xml
