@@ -1159,6 +1159,7 @@ section {
     font: inherit;
     background: var(--bg-secundario);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: #fff;
 }
 
 .form-group input:focus,
@@ -1886,7 +1887,7 @@ section {
     background: linear-gradient(140deg, rgba(5, 5, 8, 0.95), rgba(15, 15, 22, 0.85));
 }
 .hero::before {
-    opacity: 0.12;
+    opacity: 0.4;
     filter: grayscale(0.2);
 }
 .hero-title {
